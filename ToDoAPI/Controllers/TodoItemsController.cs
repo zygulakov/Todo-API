@@ -20,67 +20,33 @@ namespace ToDoAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<ReadTodoItemDto>> GetTodoItems()
         {
-            try
-            {
 
-                return Ok(_todoService.GetAllTodoItems());
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return Ok(_todoService.GetAllTodoItems());
+
         }
 
         [HttpGet("{id}")]
         public ActionResult<ReadTodoItemDto> GetTodoItemById(int id)
         {
-            try
-            {
-                return Ok(_todoService.GetTodoItemById(id));
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return Ok(_todoService.GetTodoItemById(id));
         }
 
         [HttpPatch]
         public ActionResult<ReadTodoItemDto> UpdateTodoItem(UpdateTodoItemDto todoItem)
         {
-            try
-            {
-                return Ok(_todoService.UpdateTodoItem(todoItem));
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return Ok(_todoService.UpdateTodoItem(todoItem));
         }
 
         [HttpPost]
         public ActionResult<ReadTodoItemDto> CreateTodoItem(CreateTodoItemDto todoItem)
         {
-            try
-            {
-                return Ok(_todoService.CreateTodoItem(todoItem));
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return Ok(_todoService.CreateTodoItem(todoItem));
         }
 
         [HttpDelete("{id}")]
         public ActionResult<ReadTodoItemDto> DeleteTodoItemById(int id)
         {
-            try
-            {
-                return Ok(_todoService.DeleteTodoItem(id));
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return Ok(_todoService.DeleteTodoItem(id));
         }
     }
 }

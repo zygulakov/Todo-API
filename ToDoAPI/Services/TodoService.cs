@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System;
 using ToDoAPI.Data;
 using ToDoAPI.Dtos;
 using ToDoAPI.Models;
@@ -36,6 +35,9 @@ namespace ToDoAPI.Services
         public ReadTodoItemDto GetTodoItemById(int id)
         {
             var todoItem = _repo.GetTodoItemById(id);
+            if (todoItem is null)
+                throw new Exception($"item with id:{id} not found");
+
             return _mapper.Map<ReadTodoItemDto>(todoItem);
         }
 
@@ -50,6 +52,9 @@ namespace ToDoAPI.Services
         public ReadTodoItemDto DeleteTodoItem(int id)
         {
             var todoItemToRemove = _repo.GetTodoItemById(id);
+            if (todoItemToRemove is null)
+                throw new Exception($"item with id:{id} not found");
+
             var deletedItem = _repo.DeleteTodoItem(todoItemToRemove);
             _repo.SaveChanges();
             return _mapper.Map<ReadTodoItemDto>(deletedItem);
